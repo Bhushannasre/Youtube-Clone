@@ -1,0 +1,90 @@
+nav {
+  padding: 4px 20px;
+  justify-content: space-between;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 100;
+}
+
+/* ===== Logo Adjustments ===== */
+.logo {
+  height: 45px;   
+  width: auto;    
+}
+
+.nav-left .menu-icon {
+  width: 25px;
+  margin-right: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.nav-left .menu-icon:hover {
+  transform: scale(1.1);
+}
+
+.nav-left .logo {
+  width: 115px;   
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.nav-left .logo:hover {
+  transform: scale(1.05);
+}
+
+/* ===== Search Box ===== */
+.nav-middle .search-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  margin-right: 15px;
+  padding: 8px 14px;
+  border-radius: 25px;
+  background-color: #f9f9f9;
+  transition: all 0.2s ease;
+}
+
+.nav-middle .search-box:hover,
+.nav-middle .search-box:focus-within {
+  border-color: #d32f2f; 
+  box-shadow: 0 0 5px rgba(211, 47, 47, 0.2);
+  background-color: #fff;
+}
+
+.nav-middle .search-box input {
+  border: 0;
+  outline: 0;
+  width: 380px; 
+  background: transparent;
+  font-size: 14px;
+}
+
+/* ===== Search Icon ===== */
+.search-logo {
+  width: 24px;
+  height: 24px;
+  margin-left: 10px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: all 0.2s ease;
+}
+
+.search-logo:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* ===== Right Section ===== */
+.nav-right img {
+  margin-right: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.nav-right img:hover {
+  transform: scale(1.1);
+}

@@ -1,0 +1,39 @@
+.feed{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-column-gap: 15px;
+    grid-row-gap: 25px;
+    padding: 20px 20px 0 0;
+    
+}
+.feed .card{
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+.feed .card img{
+    width: 0px 30px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.feed .card h2{
+    font-size: 16px;
+    margin: 10px 0 5px 0;
+    color: #000;
+}
+.feed .card h3{
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #606060;
+}
+.feed .card p{
+    font-size: 13px;
+    color: #909090;
+}
+@media (max-width: 600px){
+    .feed{
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
