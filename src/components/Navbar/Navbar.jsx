@@ -6,12 +6,13 @@ import bell from "../../assets/bell.png"
 import user from "../../assets/user.png"
 import app from "../../assets/app.png"
 import upload from "../../assets/upload.png"
+import { Link } from "react-router-dom"
 function Navbar({setSidebar}){
     return (
         <nav className="flex-div">
             <div className="nav-left flex-div">
             <img className="menu-icon" onClick={()=>setSidebar(prev=>prev===false?true:false)} src={menu} alt="menu" />
-            <img className="logo" src={youtubeimage} alt="youtube logo" />
+           <Link to='/'><img className="logo" src={youtubeimage} alt="youtube logo" /></Link> 
             </div>
             <div className="nav-middle flex-div">
                 <div className="search-box flex-div">

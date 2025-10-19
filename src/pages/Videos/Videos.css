@@ -1,0 +1,17 @@
+.videos-page {
+  display: flex;
+  gap: 20px;
+  padding: 20px 2%;
+  background: #f9f9f9;
+}
+
+
+
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+  .videos-page {
+    flex-direction: column;
+    padding: 10px;
+  }
+}

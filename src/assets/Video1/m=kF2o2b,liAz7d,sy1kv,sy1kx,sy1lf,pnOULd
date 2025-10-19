@@ -1,0 +1,30 @@
+this._s=this._s||{};(function(_){var window=this;
+try{
+_.t("kF2o2b");
+_.Ke(_.$Ya,class extends _.Yn{constructor(){super();this.Ba=new Set;this.Ca=new Set;this.oa=new Set}updateSrpSuggestionGroup(a,b){for(const c of this.Ba)c.NBe(a,b);this.Aa()}Aa(){for(const a of this.Ca)a.OBe()}updateMagiStateParams(a){for(const b of this.oa)b.ozd(a)}J0d(a){this.Ba.add(a)}K0d(a){this.Ca.add(a)}W7c(a){this.oa.add(a)}});
+_.u();
+}catch(e){_._DumpException(e)}
+try{
+_.t("liAz7d");
+_.WQp=new _.He(_.aZa);
+_.u();
+}catch(e){_._DumpException(e)}
+try{
+_.n_c=function(){return _.Fl("center_col")};
+}catch(e){_._DumpException(e)}
+try{
+_.o_c=function(){return _.vGa("rcnt")};_.p_c=function(){return _.o_c()||_.n_c()};
+}catch(e){_._DumpException(e)}
+try{
+var D1c,B1c;_.C1c=function(){return document.querySelector("[jsname=xcvsnc]")?document.querySelector("[jsname=xcvsnc]"):_.V5a?document.querySelector("[data-st-tgt=fb"):_.El(B1c)};_.E1c=function(a,b){const c=_.C1c();c?D1c(c,a,b):_.o_c()&&_.Ja(_.Il("rfiSsc"),d=>{D1c(d,a,b,!0)})};
+D1c=function(a,b,c,d=!1){a=_.Gl("A",a);for(const f of a){if(d&&(f.classList.contains("zItAnd")&&!f.classList.contains("FOU1zf")||f.classList.contains("nPDzT")&&!f.classList.contains("LatpMc")))break;if(a=f.getAttribute("href"))if(a.startsWith("/url")&&b==="q"){var e=_.gh(a,"q");e&&(e=_.$k(e,b,c),f.setAttribute("href",_.$k(a,"q",e)))}else f.setAttribute("href",_.$k(a,b,c))}};B1c=_.o_c()?"pTwnEc":"hdtb-sc";
+}catch(e){_._DumpException(e)}
+try{
+_.t("pnOULd");
+_.Ke(_.bZa,class extends _.Yn{static Sa(){return{service:{navigation:_.Tz,Rlc:_.WQp}}}constructor(a){super();this.kc=a.service.navigation;this.Rlc=a.service.Rlc}updateLinks(a){_.E1c("q",a)}navigateTo(a,b=!1){this.kc.navigateTo(a,b)}hideMobileModeSelector(){if(!_.o_c()){var a=_.C1c();a&&(a.style.display="none")}}showMobileModeSelector(){if(!_.o_c()){var a=_.C1c();a&&(a.style.display="")}}updateSrpSuggestionGroup(a,b){this.Rlc.updateSrpSuggestionGroup(a,b)}updateMagiStateParams(a){this.Rlc.updateMagiStateParams({Tsa:a})}fetch(a,
+b){return _.Vwc(a,{urlParams:b})}});
+
+_.u();
+}catch(e){_._DumpException(e)}
+})(this._s);
+// Google Inc.

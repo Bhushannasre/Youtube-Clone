@@ -102,3 +102,8 @@
   background-color: rgba(0, 0, 0, 0.15);
   border-radius: 3px;
 }
+
+.side-link.active{
+  padding-bottom: 2px;
+  border-bottom: 3px solid red;
+}

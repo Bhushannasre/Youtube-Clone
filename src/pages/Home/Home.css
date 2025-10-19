@@ -1,0 +1,28 @@
+/* Container styles */
+.container {
+  background-color: #ffffff;
+  box-sizing: border-box;
+  transition: padding-left 0.3s ease;
+}
+
+/* Adjusted layout when sidebar is hidden */
+.large-container {
+  padding-left: 5
+}
+
+/* Optional: Add some spacing between Feed and Sidebar */
+.feed-wrapper {
+  margin-top: 20px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .large-container {
+    padding-left: 5%;
+  }
+}

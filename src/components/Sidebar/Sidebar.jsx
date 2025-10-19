@@ -11,36 +11,39 @@ import mrbeast from '../../assets/mrbeast.png'
 import justinb from '../../assets/justinb.jpg'
 import craft from '../../assets/craft.jpg'
 import nasdaily from '../../assets/nasdaily.jpg'
-
+import automobile from '../../assets/automobile.png'
 
 
 import './Sidebar.css'
-function Sidebar({sidebar}){
+function Sidebar({sidebar,catagory,setCatagory}){
     return(
         <div className={`sidebar ${sidebar?"":"small-sidebar"}`}>
             <div className="sortcut-links">    
-                <div className="side-link">
+                <div className={`side-link ${catagory===0?"active":""}`} onClick={()=>setCatagory(0)}>
                    <img src={home} alt="" /><p>Home</p>
                 </div>
-                <div className="side-link">
+                <div className={`side-link ${catagory===20?"active":""}`} onClick={()=>setCatagory(20)}>
                    <img src={joystick} alt="" /><p>Games</p>
                 </div>
-                <div className="side-link">
+                  <div className={`side-link ${catagory===2?"active":""}`} onClick={()=>setCatagory(2)}>
+                   <img src={automobile} alt="" /><p>Automobile</p>
+                </div>
+                <div className={`side-link ${catagory===17?"active":""}`}  onClick={()=>setCatagory(17)}>
                    <img src={sports} alt="" /><p>Sports</p>
                 </div>
-                <div className="side-link">
+                <div className={`side-link ${catagory===24?"active":""}`} onClick={()=>setCatagory(24)}>
                    <img src={Video} alt="" /><p>Entertainment</p>
                 </div>
-                <div className="side-link">
+                <div className={`side-link ${catagory===28?"active":""}`} onClick={()=>setCatagory(28)}>
                    <img src={technology} alt="" /><p>Technology</p>
                 </div>
-                <div className="side-link">
+                <div className={`side-link ${catagory===10?"active":""}`} onClick={()=>setCatagory(10)}>
                    <img src={music} alt="" /><p>Music</p>
                 </div>
-                <div className="side-link">
+                <div className={`side-link ${catagory===22?"active":""}`} onClick={()=>setCatagory(22)}>
                    <img src={blogs} alt="" /><p>Blogs</p>
                 </div>
-                <div className="side-link">
+                <div className={`side-link ${catagory===25?"active":""}`} onClick={()=>setCatagory(25)}>
                    <img src={news} alt="" /><p>News</p>
                 </div>
                 <hr />
