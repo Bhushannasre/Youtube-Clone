@@ -4,20 +4,42 @@ import like from '../../assets/like.png';
 import dislike from '../../assets/dislike.png';
 import share from '../../assets/share.png';
 import save from '../../assets/save.png';
-import Thumbnail1 from '../../assets/Thumbnail1.jpg';
-import user from '../../assets/user.png';
 import { API_KEY, value_converter } from '../../data.js';
 import React, { useEffect } from 'react';
 import moment from 'moment';
 function PlayVideo({videoId}) {
     const [apiData,setApiData]=React.useState(null);
+    const [channelData,setChannelData]=React.useState(null);
+    const [commentData,setCommentData]=React.useState([]);
+    // Fetch video data from YouTube API
     const fetchVideoData=async()=>{
-        const video_url=` https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${API_KEY}`;
+        const video_url=`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=${videoId}&key=${API_KEY}`;
+        
          await fetch(video_url).then((response)=>response.json()).then(data=>setApiData(data.items[0]));
     }
+    // Fetch channel data from YouTube API
+    const fetchotherData=async()=>{
+      const channel_url=`https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${apiData.snippet.channelId}&key=${API_KEY}`;
+
+        await fetch(channel_url).then((response)=>response.json()).then(data=>setChannelData(data.items || []));
+
+          //fetch comments data from YouTube API
+
+         const comment_url=` https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&maxResults=50&videoId=${videoId}&key=${API_KEY}`;
+        await fetch(comment_url).then((response)=>response.json()).then(data=>setCommentData(data.items[0]));
+    }
+   
+    
+     
+    
+
     useEffect(()=>{
         fetchVideoData();
     })
+    useEffect(()=>{
+      fetchotherData();
+    }) 
+  
   return (
     <div className="play-video">
       {/* Video Player */}
@@ -34,7 +56,7 @@ function PlayVideo({videoId}) {
           <span>{apiData?value_converter(apiData.statistics.viewCount):"16K"} views &bull;{apiData?moment(apiData.snippet.publishedAt).fromNow():""}  </span>
         </div>
         <div className="video-actions">
-          <button><img src={like} alt="like" /> 2K</button>
+          <button><img src={like} alt="like" />{apiData?value_converter(apiData.statistics.likeCount):155}</button>
           <button><img src={dislike} alt="dislike" /></button>
           <button><img src={share} alt="share" /> Share</button>
           <button><img src={save} alt="save" /> Save</button>
@@ -45,10 +67,10 @@ function PlayVideo({videoId}) {
 
       {/* Channel / Publisher */}
       <div className="publisher">
-        <img src={Thumbnail1} alt="channel logo" />
+        <img src={channelData?channelData.snippet.thumbnails.default.url:""} alt="channel logo" />
         <div className="publisher-info">
-          <h4>GTA Gaming</h4>
-          <span>1M subscribers</span>
+          <h4>{apiData?apiData.snippet.channelTitle:""}</h4>
+          <span>{channelData?value_converter(channelData.statistics.subscriberCount):"1M"} subscribers</span>
         </div>
         <button className="subscribe-btn">Subscribe</button>
       </div>
@@ -56,30 +78,35 @@ function PlayVideo({videoId}) {
       {/* Description */}
       <div className="video-description">
         <p>
-          This is one of the best gaming videos you’ll watch! We explore some of the top games available today. 
-          Sit back, relax, and enjoy the gameplay!
+       {apiData?apiData.snippet.description.slice(0,300):"Description Loading..."}
         </p>
-        <span className="show-more">Show more</span>
+        <span className="show-more">Show More</span>
       </div>
 
       <hr />
 
       {/* Comments Section */}
       <div className="comments-section">
-        <h3>130 Comments</h3>
-        <div className="comment">
-          <img src={user} alt="user avatar" />
+        <h3>{apiData?value_converter(apiData.statistics.commentCount):102} Comments</h3>
+        {commentData.map((item,index)=>{
+           return(
+            <div key={index} className="comment">
+          <img src={item.snippet.topLevelComment.snippet.authorProfileImageUrl} alt="user avatar" />
           <div className="comment-body">
-            <h4>Hello <span>• 1 day ago</span></h4>
-            <p>This is the best gaming video I’ve watched on YouTube!</p>
+            <h4>{item.snippet.topLevelComment.snippet.authorDisplayName} <span>• 1 day ago</span></h4>
+            <p>{item.snippet.topLevelComment.snippet.textDisplay}</p>
             <div className="comment-actions">
-              <img src={like} alt="like" />
+              <img src={value_converter(item.snippet.topLevelComment.snippet.likeCount)} alt="like" />
               <span>500</span>
               <img src={dislike} alt="dislike" />
               <span>100</span>
             </div>
           </div>
         </div>
+           )
+        })}
+        
+        
       </div>
     </div>
   );

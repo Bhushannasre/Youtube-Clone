@@ -19,7 +19,7 @@ function Feed({catagory}){
     },[catagory])
     return(
         <div className="feed">
-          {data.map((item,index)=>{
+          {data.map((item)=>{
             return(
               <Link to={`video/${item.snippet.catagoryID}/${item.id}`} className="card">
           <img src={item.snippet.thumbnails.medium.url} alt="" />
