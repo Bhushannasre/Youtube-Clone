@@ -1,5 +1,5 @@
 .play-video {
-  flex-basis: 68%;
+  flex: 2;
   padding-right: 20px;
 }
 
@@ -15,7 +15,6 @@
   font-weight: 600;
   margin: 10px 0;
   color: #0f0f0f;
-  line-height: 1.4;
 }
 
 .video-meta {
@@ -28,6 +27,7 @@
 
 .video-actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
@@ -50,7 +50,7 @@
 }
 
 .video-actions img {
-  width: 25px;
+  width: 20px;
 }
 
 hr {
@@ -60,34 +60,23 @@ hr {
   margin: 16px 0;
 }
 
-/* Channel section */
+/* Channel Info */
 .publisher {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .publisher img {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  margin-right: 12px;
 }
 
 .publisher-info {
   flex: 1;
-  line-height: 18px;
-}
-
-.publisher-info h4 {
-  font-size: 16px;
-  margin: 0;
-  color: #000;
-}
-
-.publisher-info span {
-  font-size: 14px;
-  color: #606060;
+  margin-left: 10px;
 }
 
 .subscribe-btn {
@@ -124,11 +113,6 @@ hr {
   margin-top: 20px;
 }
 
-.comments-section h3 {
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-
 .comment {
   display: flex;
   gap: 12px;
@@ -142,35 +126,40 @@ hr {
 }
 
 .comment-body h4 {
-  margin: 0;
   font-size: 15px;
   color: #0f0f0f;
-}
-
-.comment-body span {
-  font-size: 13px;
-  color: #606060;
-}
-
-.comment-body p {
-  margin: 4px 0;
-  color: #333;
 }
 
 .comment-actions {
   display: flex;
   align-items: center;
   gap: 6px;
+  
+}
+.comment-actions img {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  
+}
+.comment-actions img:hover {
+  background-color: grey;
 }
 
-.comment-actions img {
-  width: 18px;
+/* Responsive */
+@media (max-width: 1024px) {
+  .play-video {
+    padding-right: 0;
+  }
 }
 
 @media (max-width: 768px) {
   .play-video {
-    flex-basis: 100%;
-    padding-right: 0;
+    flex: 1;
+  }
+
+  .play-video iframe {
+    height: 55vw;
   }
 
   .video-actions button {
@@ -179,10 +168,6 @@ hr {
   }
 
   .subscribe-btn {
-    padding: 6px 12px;
-  }
-
-  .play-video video {
-    max-height: 250px;
+    padding: 6px 10px;
   }
 }

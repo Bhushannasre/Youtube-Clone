@@ -1,0 +1,30 @@
+.search-title {
+  margin: 1rem 0;
+  font-size: 1.2rem;
+}
+
+.feed-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.video-card {
+  cursor: pointer;
+}
+
+.video-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.video-card h4 {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: black;
+}
+
+.video-card p {
+  font-size: 0.9rem;
+  color: #aaa;
+}

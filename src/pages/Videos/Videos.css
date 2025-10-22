@@ -5,10 +5,32 @@
   background: #f9f9f9;
 }
 
+.main-video {
+  flex: 2;
+}
 
+.recommanded-videos {
+  flex: 1;
+}
+.large-container {
+  margin-left: 80px;
+}
 
+/* Sidebar hidden / menu clicked */
+.full-width-container {
+  margin-left: 0 !important;
+  width: 100%;
+  padding-left: 7%; 
+}
+/* Tablet */
+@media (max-width: 1024px) {
+  .videos-page {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
 
-/* Responsive for mobile */
+/* Mobile */
 @media (max-width: 768px) {
   .videos-page {
     flex-direction: column;

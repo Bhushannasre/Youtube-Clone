@@ -1,72 +1,37 @@
 import './Recommanded.css';
-import thumbnail8 from '../../assets/tumbnail8.jpg';
-import thumbnail4 from '../../assets/tumbnail4.jpg';
-import thumbnail6 from '../../assets/tumbnail6.jpg';
-import thumbnail5 from '../../assets/tumbnail5.jpg';
-import thumbnail7 from '../../assets/tumbnail7.jpg';
+import { API_KEY, value_converter } from '../../data.js';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
   
 
 
-function Recommanded(){         
-
+function Recommanded({catagoryId}) {     
+    const [apiData,setApiData]=useState([]);    
+    
+    const fetchData= async()=>{
+        const relatedVideos_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&chart=mostPopular&regionCode=US&videoCatagoryId=${catagoryId}&type=video&maxResults=50&key=${API_KEY}`;
+        await fetch(relatedVideos_url).then((res)=>res.json()).then(data=>setApiData(data.items));
+    }
+    useEffect(()=>{
+        fetchData();
+    },[])
     return(
         <div className="recommanded">
-        <div className="side-video-list">
-            <img src={thumbnail8} alt="" />
+            {apiData.map((item,index)=>{
+                return(
+                    <Link to={`/video/${item.snippet.catagoryId}/${item.id}`} key={index} className="side-video-list">
+            <img src={item.snippet.thumbnails.medium.url} alt="" />
             <div className="video-info">
-                <h4>Best Podcast watch full video and get know inghits about money.</h4>
-                <p>GreetStack</p>
-                <p>199k Views</p>
+                <h4>{item.snippet.title}</h4>
+                <p>{item.snippet.channelTitle}</p>
+                <p>{value_converter(item.statistics.viewCount)} Views</p>
             </div>
 
-        </div>
-             <div className="side-video-list">
-            <img src={thumbnail4} alt="" />
-            <div className="video-info">
-                <h4>Best Podcast watch full video and get know inghits about money.</h4>
-                <p>GreetStack</p>
-                <p>199k Views</p>
+        </Link>
+                )
+            })}
+      
             </div>
-
-        </div>
-             <div className="side-video-list">
-            <img src={thumbnail6} alt="" />
-            <div className="video-info">
-                <h4>Best Podcast watch full video and get know inghits about money.</h4>
-                <p>GreetStack</p>
-                <p>199k Views</p>
-            </div>
-
-        </div>
-                 <div className="side-video-list">
-            <img src={thumbnail5} alt="" />
-            <div className="video-info">
-                <h4>Best Podcast watch full video and get know inghits about money.</h4>
-                <p>GreetStack</p>
-                <p>199k Views</p>
-            </div>
-
-        </div>
-                 <div className="side-video-list">
-            <img src={thumbnail7} alt="" />
-            <div className="video-info">
-                <h4>Best Podcast watch full video and get know inghits about money.</h4>
-                <p>GreetStack</p>
-                <p>199k Views</p>
-            </div>
-
-        </div>
-                 <div className="side-video-list">
-            <img src={thumbnail6} alt="" />
-            <div className="video-info">
-                <h4>Best Podcast watch full video and get know inghits about money.</h4>
-                <p>GreetStack</p>
-                <p>199k Views</p>
-            </div>
-
-        </div>
-
-        </div>
     )
 }   
 export default Recommanded;

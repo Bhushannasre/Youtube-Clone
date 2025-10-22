@@ -1,28 +1,40 @@
-/* Container styles */
 .container {
-  background-color: #ffffff;
-  box-sizing: border-box;
-  transition: padding-left 0.3s ease;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+  transition: all 0.3s ease;
+  padding: 20px;
+  margin-left: 240px; 
 }
 
-/* Adjusted layout when sidebar is hidden */
+/* Sidebar collapsed (small) */
 .large-container {
-  padding-left: 5
+  margin-left: 80px;
 }
 
-/* Optional: Add some spacing between Feed and Sidebar */
-.feed-wrapper {
-  margin-top: 20px;
+/* Sidebar hidden / menu clicked */
+.full-width-container {
+  margin-left: 0 !important;
+  width: 100%;
+  padding-left: 7%; 
 }
 
-/* Responsive tweaks */
-@media (max-width: 768px) {
-  .container {
-    padding-left: 5%;
-    padding-right: 5%;
+/* Responsive */
+@media (max-width: 1024px) {
+  .container,
+  .large-container,
+  .full-width-container {
+    margin-left: 0;
+    padding: 15px;
+    width: 100%;
   }
+}
 
-  .large-container {
-    padding-left: 5%;
+@media (max-width: 768px) {
+  .container,
+  .large-container,
+  .full-width-container {
+    margin-left: 0;
+    padding: 10px;
+    width: 100%;
   }
 }

@@ -1,38 +1,52 @@
-.feed{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    grid-column-gap: 15px;
-    grid-row-gap: 25px;
-    padding: 20px 20px 0 0;
-}
-.feed .card{
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-}
-.feed .card img{
-    width: 0px 30px;
-    height: auto;
-    border-radius: 8px;
+.feed {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  transition: all 0.3s ease;
 }
 
-.feed .card h2{
-    font-size: 16px;
-    margin: 10px 0 5px 0;
-    color: #000;
-}
-.feed .card h3{
-    font-size: 14px;
-    margin-bottom: 5px;
-    color: #606060;
-}
-.feed .card p{
-    font-size: 13px;
-    color: #909090;
-}
-@media (max-width: 600px){
-    .feed{
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
+
+.full-width-container .feed {
+  padding-left: 0 !important;
 }
 
+.feed .card {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.feed .card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.feed .card h2 {
+  font-size: 16px;
+  margin: 10px 0 5px;
+  color: #000;
+}
+
+.feed .card h3 {
+  font-size: 14px;
+  color: #606060;
+}
+
+.feed .card p {
+  font-size: 13px;
+  color: #909090;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .feed {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .feed {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    padding: 10px;
+  }
+}

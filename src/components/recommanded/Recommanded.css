@@ -2,61 +2,62 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  max-height: 90vh; /* Sidebar height */
-  overflow-y: auto; /* Scroll if content exceeds */
+  max-height: 90vh;
+  overflow-y: auto;
   padding-right: 5px;
 }
 
-/* Each side video entry */
 .side-video-list {
   display: flex;
   gap: 10px;
+  align-items: flex-start;
   cursor: pointer;
-  transition: background 0.2s;
   padding: 6px 0;
+  border-radius: 6px;
+  transition: background 0.2s;
 }
 
 .side-video-list:hover {
   background: #f2f2f2;
-  border-radius: 6px;
 }
 
 .side-video-list img {
   width: 120px;
   height: 68px;
-  border-radius: 4px;
+  border-radius: 6px;
   object-fit: cover;
-}
-
-/* Video info text */
-.video-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  font-size: 14px;
-  color: #0f0f0f;
 }
 
 .video-info h4 {
   font-size: 14px;
   font-weight: 500;
-  margin: 0;
-  line-height: 1.2;
-  color: #0f0f0f;
+  margin: 0 0 4px 0;
 }
 
 .video-info p {
-  margin: 2px 0;
   font-size: 12px;
   color: #606060;
+  margin: 2px 0;
 }
 
-/* Scrollbar styling (optional for better look) */
-.recommanded::-webkit-scrollbar {
-  width: 6px;
-}
+/* Responsive */
+@media (max-width: 900px) {
+  .recommanded {
+    flex-basis: 100%;
+    max-height: unset;
+  }
 
-.recommanded::-webkit-scrollbar-thumb {
-  background: rgba(0,0,0,0.2);
-  border-radius: 3px;
+  .side-video-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .side-video-list img {
+    width: 100%;
+    height: auto;
+  }
+
+  .video-info {
+    text-align: center;
+  }
 }
