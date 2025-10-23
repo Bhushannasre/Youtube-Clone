@@ -43,7 +43,7 @@ function ProfilePage() {
       <hr />
 
       <h3>Your Uploaded Videos</h3>
-      <div className="video-grid">
+      <div className="video-grid">   
         {videos.length === 0 ? (
           <p>No videos uploaded yet.</p>
         ) : (

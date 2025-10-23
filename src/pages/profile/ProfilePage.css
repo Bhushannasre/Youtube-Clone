@@ -1,8 +1,8 @@
 /* ---------- Base Page Styles ---------- */
 .profile-page {
   padding: 40px 20px;
-  color: #fff;
-  background: #0f0f0f;
+  color: white;
+  background: white;
   min-height: 100vh;
   font-family: "Roboto", sans-serif;
   box-sizing: border-box;
@@ -13,7 +13,7 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  background-color: #181818;
+  background-color: #121315;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
@@ -30,11 +30,13 @@
 
 .profile-info {
   flex: 1;
+  
 }
 
 .profile-info h2 {
   font-size: 1.8rem;
   margin-bottom: 8px;
+  
 }
 
 .profile-info p {
@@ -52,19 +54,29 @@
 
 /* ---------- Video Card ---------- */
 .video-card {
-  background: white;
+ 
   border-radius: 12px;
   overflow: hidden;
   transition: background 0.3s ease, transform 0.3s ease;
   cursor: pointer;
   text-align: left;
+  border: #121315;
 
 }
 
 .video-card:hover {
 
   transform: translateY(-4px);
+  
 }
+h3{
+    color: #121315;
+}
+.video-grid {
+    color: #121315;
+    
+}
+
 
 /* ---------- Thumbnail ---------- */
 .video-card img {
