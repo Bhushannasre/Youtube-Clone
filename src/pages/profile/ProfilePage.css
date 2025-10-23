@@ -1,0 +1,202 @@
+/* ---------- Base Page Styles ---------- */
+.profile-page {
+  padding: 40px 20px;
+  color: #fff;
+  background: #0f0f0f;
+  min-height: 100vh;
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+}
+
+/* ---------- Profile Header ---------- */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: #181818;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+  margin-bottom: 30px;
+}
+
+.profile-header img {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ff0000;
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.profile-info h2 {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+}
+
+.profile-info p {
+  color: #aaa;  
+  font-size: 0.95rem;
+}
+
+/* ---------- Video Grid ---------- */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+/* ---------- Video Card ---------- */
+.video-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: background 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+  text-align: left;
+
+}
+
+.video-card:hover {
+
+  transform: translateY(-4px);
+}
+
+/* ---------- Thumbnail ---------- */
+.video-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px 12px 0 0;
+}
+
+/* ---------- Video Info ---------- */
+.video-card h3 {
+  margin: 10px 12px 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: black;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.video-card p {
+  margin: 0 12px 12px;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+/* ---------- Link Style ---------- */
+.no-underline {
+  text-decoration: none;
+}
+
+/* =============================
+   📱 Responsive Adjustments
+   ============================= */
+
+/* ✅ Tablets (768px - 1024px) */
+@media (max-width: 1024px) {
+  .profile-header {
+    flex-direction: row;
+    padding: 16px;
+    gap: 15px;
+  }
+
+  .profile-header img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .profile-info h2 {
+    font-size: 1.6rem;
+  }
+
+  .video-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .video-card img {
+    height: 160px;
+  }
+}
+
+/* ✅ Mobile (up to 768px) */
+@media (max-width: 768px) {
+  .profile-page {
+    padding: 20px 10px;
+  }
+
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+    padding: 15px;
+  }
+
+  .profile-header img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .profile-info h2 {
+    font-size: 1.4rem;
+  }
+
+  .profile-info p {
+    font-size: 0.9rem;
+  }
+
+  .video-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+  }
+
+  .video-card img {
+    height: 140px;
+  }
+
+  .video-card h3 {
+    font-size: 0.95rem;
+  }
+}
+
+/* ✅ Small Mobile (up to 480px) */
+@media (max-width: 480px) {
+  .profile-header {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .profile-header img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .profile-info h2 {
+    font-size: 1.2rem;
+  }
+
+  .video-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+  }
+
+  .video-card img {
+    height: 120px;
+  }
+
+  .video-card h3 {
+    font-size: 0.9rem;
+  }
+
+  .video-card p {
+    font-size: 0.8rem;
+  }
+}

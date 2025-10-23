@@ -1,0 +1,107 @@
+/* ---------- Base Layout ---------- */
+.watch-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #0f0f0f;
+  min-height: 100vh;
+  color: white;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+/* ---------- Video Player ---------- */
+.watch-video-player {
+  width: 100%;
+  max-width: 900px;
+  border-radius: 12px;
+  background: black;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  margin-bottom: 1.5rem;
+  aspect-ratio: 16 / 9;
+}
+
+/* ---------- Video Details ---------- */
+.watch-details {
+  max-width: 900px;
+  width: 100%;
+  text-align: left;
+}
+
+.watch-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.watch-description {
+  font-size: 1rem;
+  color: #b3b3b3;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.watch-uploader {
+  font-size: 0.9rem;
+  color: #999;
+  border-top: 1px solid #222;
+  padding-top: 0.5rem;
+}
+
+/* ---------- Loading State ---------- */
+.loading-text {
+  color: #ccc;
+  text-align: center;
+  margin-top: 100px;
+  font-size: 1.2rem;
+}
+
+/* ---------- Responsive Styles ---------- */
+
+/* Medium screens (tablets) */
+@media (max-width: 900px) {
+  .watch-container {
+    padding: 1.5rem;
+  }
+
+  .watch-video-player {
+    max-width: 100%;
+  }
+
+  .watch-title {
+    font-size: 1.5rem;
+  }
+
+  .watch-description {
+    font-size: 0.95rem;
+  }
+}
+
+/* Small screens (mobiles) */
+@media (max-width: 600px) {
+  .watch-container {
+    padding: 1rem;
+  }
+
+  .watch-video-player {
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  .watch-title {
+    font-size: 1.3rem;
+    text-align: center;
+  }
+
+  .watch-description {
+    font-size: 0.9rem;
+    text-align: justify;
+  }
+
+  .watch-uploader {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #aaa;
+  }
+}

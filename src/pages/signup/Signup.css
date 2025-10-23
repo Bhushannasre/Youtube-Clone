@@ -58,3 +58,11 @@ button:hover {
   color: #aaa;
   font-size: 0.9rem;
 }
+.link {
+  color: #1e90ff;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}

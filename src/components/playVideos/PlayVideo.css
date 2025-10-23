@@ -145,6 +145,21 @@ hr {
 .comment-actions img:hover {
   background-color: grey;
 }
+.reply-section input{
+  width: 70%;
+  height: 40px;
+  border-radius: 25px;
+}
+.reply-section .reply-btn{
+  border-radius: 25px;
+  margin: 3px;
+  background-color: #000;
+}
+.reply-section .reply-btn:hover{
+  cursor: pointer;
+  background-color: red;
+
+}
 
 /* Responsive */
 @media (max-width: 1024px) {
@@ -170,4 +185,20 @@ hr {
   .subscribe-btn {
     padding: 6px 10px;
   }
+}
+
+.comment-body button {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 5px 12px;
+  margin: 4px 4px 0 0;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.comment-body button:hover {
+  background-color: red;
 }

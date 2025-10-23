@@ -1,81 +1,59 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { registerUser } from "../../services/api";
+import { useNavigate, Link } from "react-router-dom";
 import "./Signup.css";
-import { useNavigate } from "react-router-dom";
 
-function Signup() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+const Signup = () => {
+  const [form, setForm] = useState({ username: "", email: "", password: "" });
+  const [message, setMessage] = useState("");
+  const [success, setSuccess] = useState(false);
   const navigate = useNavigate();
 
-  const handleSignup = (e) => {
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const res = await registerUser(form);
+      console.log("Signup Success:", res.data);
+      setMessage(" Signup successful! Redirecting to login...");
+      setSuccess(true);
 
-    if (!name || !email || !password) {
-      setError("All fields are required!");
-      return;
+      // Redirect to login after short delay
+      setTimeout(() => navigate("/login"), 1500);
+    } catch (err) {
+      console.error("Signup Error:", err.response?.data || err.message);
+      setMessage(err.response?.data?.message || " Error signing up");
+      setSuccess(false);
     }
-
-    // Check if email already exists
-    const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
-    const userExists = existingUsers.find((u) => u.email === email);
-
-    if (userExists) {
-      setError("User already exists! Please login.");
-      return;
-    }
-
-    // Create a new user
-    const newUser = { name, email, password };
-    const updatedUsers = [...existingUsers, newUser];
-    localStorage.setItem("users", JSON.stringify(updatedUsers));
-
-    setSuccess("Signup successful! Redirecting to login...");
-    setError("");
-
-    setTimeout(() => {
-      navigate("/login");
-    }, 1500);
   };
 
   return (
     <div className="signup-container">
-      <h2>Sign Up</h2>
-      <form onSubmit={handleSignup}>
+      <h2>Signup</h2>
+      <form onSubmit={handleSubmit}>
+        <input name="username" placeholder="Username" onChange={handleChange} />
+        <input name="email" placeholder="Email" onChange={handleChange} />
         <input
-          type="text"
-          placeholder="Full Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-
-        <input
-          type="password"
+          name="password"
           placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          type="password"
+          onChange={handleChange}
         />
-
-        {error && <p className="error">{error}</p>}
-        {success && <p className="success">{success}</p>}
-
-        <button type="submit">Sign Up</button>
+        <button type="submit">Register</button>
       </form>
+      <p className={success ? "success" : "error"}>{message}</p>
 
       <p className="note">
-        Already have an account? <a href="/login">Login</a>
+        Already have an account?{" "}
+        <Link to="/login" className="link">
+          Login
+        </Link>
       </p>
     </div>
   );
-}
+};
 
 export default Signup;

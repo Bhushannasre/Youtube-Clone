@@ -5,31 +5,43 @@ import search from "../../assets/search.png";
 import bell from "../../assets/bell.png";
 import app from "../../assets/app.png";
 import upload from "../../assets/upload.png";
+import userIcon from "../../assets/user.png";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Navbar({ setSidebar }) {
   const [searchQuery, setSearchQuery] = useState("");
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem("user"));
+
+  useEffect(() => {
+    // Watch for login/logout changes
+    const handleStorageChange = () => {
+      setUser(JSON.parse(localStorage.getItem("user")));
+    };
+    window.addEventListener("storage", handleStorageChange);
+    return () => window.removeEventListener("storage", handleStorageChange);
+  }, []);
 
   const handleSearch = () => {
-    if (searchQuery.trim() !== "") {
-      navigate(`/search/${searchQuery}`);
-    }
-  };
-
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") handleSearch();
+    if (searchQuery.trim() !== "") navigate(`/search/${searchQuery}`);
   };
 
   const handleLogout = () => {
     localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    setUser(null);
     navigate("/login");
   };
 
+  const handleUploadClick = () => {
+    if (user) navigate("/upload");
+    else navigate("/login");
+  };
+
   return (
-    <nav className="flex-div">
+    <nav className="navbar flex-div">
+      {/* ---------- LEFT ---------- */}
       <div className="nav-left flex-div">
         <img
           className="menu-icon"
@@ -38,10 +50,11 @@ function Navbar({ setSidebar }) {
           alt="menu"
         />
         <Link to="/">
-          <img className="logo" src={youtubeimage} alt="youtube logo" />
+          <img className="logo" src={youtubeimage} alt="YouTube" />
         </Link>
       </div>
 
+      {/* ---------- MIDDLE ---------- */}
       <div className="nav-middle flex-div">
         <div className="search-box flex-div">
           <input
@@ -49,7 +62,7 @@ function Navbar({ setSidebar }) {
             placeholder="Search"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            onKeyDown={handleKeyDown}
+            onKeyDown={(e) => e.key === "Enter" && handleSearch()}
           />
           <img
             className="search-logo"
@@ -60,14 +73,28 @@ function Navbar({ setSidebar }) {
         </div>
       </div>
 
+      {/* ---------- RIGHT ---------- */}
       <div className="nav-right flex-div">
-        <img src={upload} alt="upload" />
-        <img src={app} alt="app" />
-        <img src={bell} alt="bell" />
+        <img
+          src={upload}
+          alt="upload"
+          className="icon-button"
+          title="Upload Video"
+          onClick={handleUploadClick}
+        />
+        <img src={app} alt="app" className="icon-button" />
+        <img src={bell} alt="notifications" className="icon-button" />
 
         {user ? (
-          <div className="user-section">
-            <span className="user-name">{user.name}</span>
+          <div className="user-section flex-div">
+            <Link to="/profile" className="user-profile-link">
+              <img
+                src={user.avatar || userIcon}
+                alt="Profile"
+                className="user-avatar"
+              />
+              <span className="user-name">{user.username}</span>
+            </Link>
             <button className="logout-btn" onClick={handleLogout}>
               Logout
             </button>

@@ -7,6 +7,9 @@ import { useState } from "react";
 import SearchResults from "./pages/search/SearchResults";
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
+import ProfilePage from "./pages/profile/ProfilePage";
+import UploadVideo from "./pages/UploadVideo/UploadVideo.jsx";
+import WatchVideo from "./pages/watchvideos/WatchVideo.jsx";
 
 
 
@@ -25,6 +28,12 @@ const [sidebar,setSidebar]= useState(true);
       <Route path="/search/:searchQuery" element={<SearchResults sidebar={sidebar} />}></Route>
       <Route path="/login" element={<Login />} />
        <Route path="/signup" element={<Signup />} />
+       <Route path="/profile" element={<ProfilePage sidebar={sidebar} />} />
+       <Route path="/upload" element={<UploadVideo />} />
+       <Route path="/watch/:id" element={<WatchVideo />} />
+
+
+
      </Routes>
     </>
   )
