@@ -21,7 +21,7 @@ function PlayVideo() {
   const token = localStorage.getItem("token");
   const user = JSON.parse(localStorage.getItem("user"));
 
-  // ✅ Fetch YouTube video data
+  //  Fetch YouTube video data
   const fetchVideoData = async () => {
     try {
       const video_url = `https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&id=${videoId}&key=${API_KEY}`;
@@ -33,7 +33,7 @@ function PlayVideo() {
     }
   };
 
-  // ✅ Fetch channel data
+  //  Fetch channel data
   const fetchChannelData = async () => {
     if (!apiData) return;
     try {
@@ -46,7 +46,7 @@ function PlayVideo() {
     }
   };
 
-  // ✅ Fetch comments
+  //  Fetch comments
   const fetchComments = async () => {
     try {
       const res = await axios.get(`http://localhost:5000/api/comments/${videoId}`);
@@ -56,7 +56,7 @@ function PlayVideo() {
     }
   };
 
-  // ✅ Post new comment
+  //  Post new comment
   const handlePostComment = async () => {
     if (!token) {
       alert("Please log in to post a comment.");
@@ -82,13 +82,13 @@ function PlayVideo() {
     }
   };
 
-  // ✅ Start editing
+  //  Start editing
   const handleEditStart = (comment) => {
     setEditingCommentId(comment._id);
     setEditText(comment.text);
   };
 
-  // ✅ Save edited comment
+  //  Save edited comment
   const handleEditSave = async (id) => {
     if (!token) {
       alert("Please log in to edit your comment.");
@@ -107,7 +107,7 @@ function PlayVideo() {
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      // ✅ Fix: update only the edited comment with new data
+      //  Fix: update only the edited comment with new data
       setCommentData((prev) =>
         prev.map((c) =>
           c._id === id ? { ...res.data, user: c.user } : c
@@ -121,7 +121,7 @@ function PlayVideo() {
     }
   };
 
-  // ✅ Delete comment
+  //  Delete comment
   const handleDeleteComment = async (id) => {
     if (!token) {
       alert("Please log in to delete your comment.");
@@ -148,7 +148,7 @@ function PlayVideo() {
 
   return (
     <div className="play-video">
-      {/* ▶ Video Player */}
+      {/*  Video Player */}
       <iframe
         src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
         frameBorder="0"
@@ -215,7 +215,7 @@ function PlayVideo() {
 
       <hr />
 
-      {/* 💬 Comment Input */}
+      {/*  Comment Input */}
       <div className="reply-section">
         <input
           className="reply-box"
@@ -233,7 +233,7 @@ function PlayVideo() {
         </button>
       </div>
 
-      {/* 🗨 Comments */}
+      {/*  Comments */}
       <div className="comments-section">
         <h3>{commentData.length} Comments</h3>
 

@@ -109,11 +109,11 @@ h3{
   text-decoration: none;
 }
 
-/* =============================
-   📱 Responsive Adjustments
-   ============================= */
+/* 
+    Responsive Adjustments
+    */
 
-/* ✅ Tablets (768px - 1024px) */
+/*  Tablets (768px - 1024px) */
 @media (max-width: 1024px) {
   .profile-header {
     flex-direction: row;
@@ -140,7 +140,7 @@ h3{
   }
 }
 
-/* ✅ Mobile (up to 768px) */
+/*  Mobile (up to 768px) */
 @media (max-width: 768px) {
   .profile-page {
     padding: 20px 10px;
@@ -179,7 +179,7 @@ h3{
   }
 }
 
-/* ✅ Small Mobile (up to 480px) */
+/*  Small Mobile (up to 480px) */
 @media (max-width: 480px) {
   .profile-header {
     padding: 10px;
